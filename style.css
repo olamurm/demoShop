@@ -1,0 +1,728 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(images/patt.png);
+    color: white;
+
+}
+
+.header,
+.footer {
+    background-color: rgba(255, 255, 255, 0.75);
+    /* высоту для header задаем не через hight, а через р (расстояние до ближайшего элемента на макете сверху и снизу 25рх)*/
+    padding: 25px 0;
+}
+
+/* контент */
+
+.container {
+    position: relative;
+    /* максимальная ширина */
+    max-width: 1200px;
+    /* центрирование container по горизонтали */
+    margin: 0 auto;
+    /* по бокам до контента на макете 15px */
+    padding: 0 15px;
+    /* подключила для Н1 */
+    font-family: "Roboto", sans-serif;
+}
+
+/* сетка */
+
+.row {
+    display: flex;
+    /* чтобы избежать двойного р:15рх */
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.col-1 {
+    /* к-нт растягивания */
+    flex-grow: 0;
+    /* к-нт сжатия */
+    flex-shrink: 0;
+    /* минимальная ширина 1 блока bp 12 = 1/12=8.333333% */
+    flex-basis: 8.333333%;
+    /* чтобы правильно выводился размер блока нужно задать максимальную ширину */
+    max-width: 8.333333%;
+}
+
+.col-3 {
+    /* к-нт растягивания flex-grow: 0;
+    к-нт сжатия flex-shrink: 0;
+    минимальная ширина блока flex-basis: 25%; */
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.col-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+
+
+.col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.col-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+
+/* на макете каждая колонка имеет бока по 15рх */
+[class*="col-"] {
+    padding-left: 15px;
+    padding-right: 15px;
+    /* в row ml:-15px и mr:-15px чтобы избежать двойного р:15рх */
+}
+
+/* выводим элементы шапки*/
+
+.logo {
+    /* до Logo на макете не 25, а 32рх, опускаем на 6рх */
+    padding-top: 6px;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu li {
+    width: 25%;
+    /* вертикальные линии между пунктами меню */
+    border-left: 1px solid #3476ba;
+}
+
+.menu a {
+    /* а маленький, li большой, чтобы а=li */
+    display: flex;
+    /* центрируем по вертикали */
+    justify-content: center;
+    /* центрируем по горизонтали */
+    align-items: center;
+    height: 50px;
+    font-size: 21px;
+    color: #3476ba;
+    text-decoration: none;
+}
+
+/* вертикальные линии между пунктами меню */
+.menu li:last-child {
+    border-right: 1px solid #3476ba;
+}
+
+/* реверс цветов при наведении на пункт меню */
+.menu a:hover {
+    background-color: #3476ba;
+    color: white;
+}
+
+/* значок угол вниз возле пункта с выпадающим меню */
+.down-angle {
+    background-image: url(images/down-angle-blue.svg);
+    background-repeat: no-repeat;
+    background-position-x: 121px;
+    background-position-y: center;
+}
+
+/* при наведении на пункт с выпадающим меню значок угол вниз возле пункта меню и сам пункт меню меняют цвет*/
+.drop-down-menu:hover .down-angle {
+    background-image: url(images/down-angle-white.svg);
+    background-color: #3476ba;
+    color: white;
+}
+
+/* выпадающее меню будет исключаться из потока */
+.drop-down-menu {
+    position: relative;
+    z-index: 10;
+}
+
+/* выпадающее меню */
+.drop-down-items {
+    /* спрятано */
+    display: none;
+    /* позиционирование вне потока */
+    position: absolute;
+    /* корректировка расположения  */
+    left: -1px;
+    border: 1px solid #3476ba;
+}
+
+/* при наведении на пункт меню появляется элементы выпадающего меню */
+.drop-down-menu:hover .drop-down-items {
+    display: block;
+}
+
+/* ширина для элеменов выпадающего меню*/
+.drop-down-items li {
+    width: 284px;
+}
+
+/* ссылки в выпадающем меню */
+.drop-down-items a {
+    /* расположение слева */
+    justify-content: flex-start;
+    /* отступ слева */
+    padding-left: 25px;
+    /* обычный цвет элеменов выпадающего меню */
+    background-color: #3476ba;
+    color: white;
+}
+
+.drop-down-items li:first-child {
+    /* выпадающее меню начинается ниже */
+    background-color: #3476ba;
+    padding-top: 15px;
+}
+
+/* реверс цветов при наведении на пункт выпадающего меню */
+.drop-down-items a:hover {
+    color: #3476ba;
+    background-color: white;
+}
+
+/* форма поиска и корзина */
+
+.search {
+    display: flex;
+    /* чтобы элемент form-search встал посередине вертикально у род.блока должна быть высота */
+    height: 50px;
+    align-items: center;
+    /* поле поиска и корзина разъехались к краям */
+    justify-content: space-between;
+}
+
+.form-search {
+    display: flex;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #3476ba;
+    align-items: center;
+}
+
+.form-search input {
+    font-family: "Roboto", sans-serif;
+    background-color: #3477ba00;
+    border: none;
+    width: 165px;
+    color: #2c71b8;
+    outline: none;
+    padding-left: 20px;
+    font-size: 21px;
+}
+
+.form-search input::placeholder {
+    color: #3476ba;
+    font-size: 21px;
+}
+
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    /* по умолчанию у кнопки есть вн.отступы */
+    padding: 0;
+}
+
+.form-search button {
+    width: 30px;
+    height: 30px;
+    background-color: #3476ba;
+    border: 1px solid #3476ba;
+    padding-right: 6px;
+    background-image: url(images/icon4.png);
+}
+
+.shop-box {
+    position: relative;
+}
+
+.shop-box button {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid white;
+    background-image: url(images/icon1.png);
+}
+
+.shop-box div {
+    position: absolute;
+    font-size: 13px;
+    width: 22px;
+    height: 22px;
+    top: -10px;
+    left: -10px;
+    background-color: #3476ba;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 22px;
+}
+
+/* === центральная часть === */
+
+.sliders {
+    height: 400px;
+    text-align: center;
+    line-height: 400px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    background-color: hsla(211, 62%, 36%, 0.75);
+}
+
+.slider {
+    max-width: 1210px;
+    margin: 0 auto;
+    font-size: 100px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    letter-spacing: 13px;
+}
+
+.main .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    width: 210px;
+    height: 50px;
+    font-size: 21px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+    text-transform: uppercase;
+    background-color: #3477ba;
+}
+
+aside {
+    display: flex;
+}
+
+.filter {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-right: 1px solid white;
+    margin-left: -15px;
+    font-size: 21px;
+}
+
+.filter-block {
+    padding-top: 33px;
+    padding-left: 29px;
+}
+
+.filter-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.filter-checkbox {
+    display: block;
+    margin-bottom: 25px;
+}
+
+.filter-block input[type='checkbox'] {
+    display: none;
+}
+
+.filter-block label {
+    display: block;
+    cursor: pointer;
+    line-height: 21px;
+}
+
+.filter-block label::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid white;
+    margin: 5px 10px 0 0;
+    float: left;
+}
+
+.filter-block input[type='checkbox']:checked+label::before {
+    background-color: white;
+}
+
+.filter a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+}
+
+.filter button {
+    margin: 30px;
+}
+
+.goods {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+}
+
+.breadcrumbs {
+    font-size: 14px;
+    color: #8cb2d9;
+}
+
+.breadcrumbs a {
+    font-size: 14px;
+    color: #8cb2d9;
+    text-decoration: none;
+}
+
+.breadcrumbs a::after {
+    content: ">";
+    padding: 0 9px;
+}
+
+.breadcrumbs span {
+    text-decoration: underline;
+    /*     НЕ УДАЛОСЬ СДЕЛАТЬ НЕПРЕРЫВНОЕ ПОДЧЕРКИВАНИЕ, БОРДЕР СЛИШКОМ НИЗКО */
+    /* Смещаем подчёркивание на 1 пиксель вниз
+    text-underline-offset: 1px;
+    /* Толщина подчёркивания — 1 пиксель */
+    /* text-decoration-thickness: 1px;    */
+}
+
+.goods-top {
+    padding-top: 25px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.goods h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.sort-menu {
+    /* выпадающее меню будет исключаться из потока */
+    position: relative;
+    z-index: 10;
+    width: 270px;
+
+    background-color: #3476ba;
+    border: 1px solid white;
+    height: 40px;
+    line-height: 40px;
+
+    background-image: url(images/down-angle-white.svg);
+    background-repeat: no-repeat;
+    background-position-x: 240px;
+    background-position-y: center;
+    padding-left: 20px;
+    /* корректировка позиции */
+    margin-left: 2.5px;
+}
+
+/* выпадающее меню */
+.sort-items p {
+    /* спрятано */
+    display: none;
+    border: 1px solid white;
+    /* позиционирование вне потока */
+    z-index: 10;
+    /* расположение слева */
+    justify-content: flex-start;
+    /* отступ слева */
+    padding-left: 20px;
+    /* обычный цвет элеменов выпадающего меню */
+    background-color: #3476ba;
+    color: white;
+    /* корректировка размеров */
+    margin-left: -21px;
+    margin-right: -1px;
+    margin-top: -2px;
+}
+
+/* при наведении на пункт sort-menu появляется элементы выпадающего меню */
+.sort-menu:hover .sort-items p {
+    display: block;
+}
+
+/* реверс цветов при наведении на пункт выпадающего меню */
+.sort-items p:hover {
+    color: #3476ba;
+    background-color: white;
+}
+
+/*  ===  ТОВАРЫ  ===  */
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    background-color: #3476ba;
+    width: 270px;
+    margin-bottom: 30px;
+}
+
+.product-picture {
+    position: relative;
+    background-color: #cadbedd3;
+    height: 176px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.zoom {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #3476ba;
+    background-color: #3477ba00;
+    background-image: url(images/icon8.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.zoom:hover {
+    background-image: url(images/icon6.png);
+    background-color: #3477ba;
+}
+
+.like {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #3476ba;
+    background-color: #3477ba00;
+    background-image: url(images/icon5.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+}
+
+.like:hover,
+.liked {
+    background-color: #3477ba;
+    background-image: url(images/icon7.png);
+}
+
+.product-spec {
+    padding: 13px;
+    font-size: 21px;
+    border: 1px solid white;
+}
+
+.product-name {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-spec span {
+    font-weight: bold;
+}
+
+.short-discr {
+    padding-bottom: 20px;
+}
+
+.price {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.price span {
+    vertical-align: top;
+    font-size: 20px;
+}
+
+
+
+.product-spec button {
+    margin-bottom: 15px;
+    margin-left: 15px;
+
+}
+
+.cart {
+    background-color: #558dc5;
+    border: 1px solid #558dc5;
+    background-image: url(images/icon2.png);
+    background-position-x: 175px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.cart:hover,
+.cart-clicked {
+    background-color: white;
+    color: #558dc5;
+    background-image: url(images/icon1.png);
+}
+
+.device-1 {
+    background-image: url(images/icon17.png);
+}
+
+.device-2 {
+    background-image: url(images/icon9.png);
+}
+
+.device-3 {
+    background-image: url(images/icon10.png);
+}
+
+.device-4 {
+    background-image: url(images/icon16.png);
+}
+
+.device-5 {
+    background-image: url(images/icon14.png);
+}
+
+.device-6 {
+    background-image: url(images/icon12.png);
+}
+
+.device-7 {
+    background-image: url(images/icon15.png);
+}
+
+.device-8 {
+    background-image: url(images/icon9.png);
+}
+
+.device-9 {
+    background-image: url(images/icon10.png);
+}
+
+.btn-more-details:hover {
+    border-color: #3476ba;
+    color: #3477ba;
+    background-color: #fff;
+}
+
+.more-text {
+    font-size: 36px;
+    color: white;
+    margin: 0 auto;
+    margin-bottom: 85px;
+    text-decoration: none;
+}
+
+.footer {
+    text-align: center;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    color: #2c71b8;
+}
+
+.modal-block {
+    width: 250px;
+    height: 230px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid grey;
+    margin: 100px auto;
+}
+
+.modal-block form {
+    position: relative;
+    padding-top: 20px;
+}
+
+.modal-block h3 {
+    margin-bottom: 15px;
+}
+
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field input {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+}
+
+.btn-close {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.slick-dotted.slick-slider {
+    width: 1100px;
+}
+
+.slick-prev,
+.slick-next {
+    width: 30px;
+    height: 100px;
+}
+
+
+.slick-prev {
+    left: -45px;
+}
+
+
+.slick-prev:before {
+    content: url(images/211689_left_arrow_icon.svg);
+}
+
+.slick-next:before {
+    content: url(images/211607_right_arrow_icon.svg);
+}
+
+
+
+.slick-dots {
+    bottom: -140px;
+}
+
+.slick-dots li button:before {
+    content: "";
+    border: 1px solid white;
+    width: 10px;
+    height: 10px;
+}
+
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before {
+    background-color: #fff;
+}
