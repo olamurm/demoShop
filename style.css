@@ -570,7 +570,6 @@ aside {
     padding-left: 30px;
 }
 
-.cart:hover,
 .cart-clicked {
     background-color: white;
     color: #558dc5;
