@@ -718,7 +718,8 @@ aside {
     content: "";
     border: 1px solid white;
     width: 10px;
-    height: 10px;
+    height: 10px;  
+    background-color: #fff;
 }
 
 .slick-dots li button:hover:before,
