@@ -714,15 +714,19 @@ aside {
     bottom: -140px;
 }
 
+
 .slick-dots li button:before {
     content: "";
-    border: 1px solid white;
-    width: 10px;
-    height: 10px;  
-    background-color: #fff;
 }
 
-.slick-dots li button:hover:before,
-.slick-dots li button:focus:before {
+.slick-dots li button {
+    border: 1px solid white;
+    width: 10px;
+    height: 10px;
+}
+
+.slick-dots li.slick-active button,
+.slick-dots li button:hover,
+.slick-dots li button:focus {
     background-color: #fff;
 }
