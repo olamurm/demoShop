@@ -5,7 +5,6 @@
 body {
     background-image: url(images/patt.png);
     color: white;
-
 }
 
 .header,
@@ -221,7 +220,7 @@ body {
     font-size: 21px;
 }
 
-button {
+.button {
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -229,7 +228,7 @@ button {
     padding: 0;
 }
 
-.form-search button {
+.form-search .button {
     width: 30px;
     height: 30px;
     background-color: #3476ba;
@@ -242,7 +241,7 @@ button {
     position: relative;
 }
 
-.shop-box button {
+.shop-box .button {
     width: 40px;
     height: 40px;
     background-color: white;
@@ -252,15 +251,15 @@ button {
 
 .shop-box div {
     position: absolute;
-    font-size: 13px;
-    width: 22px;
-    height: 22px;
-    top: -10px;
-    left: -10px;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    top: -9px;
+    left: -9px;
     background-color: #3476ba;
     border-radius: 50%;
     text-align: center;
-    line-height: 22px;
+    line-height: 20px;
 }
 
 /* === центральная часть === */
@@ -289,7 +288,7 @@ button {
     justify-content: center;
 }
 
-button {
+.button {
     font-family: "Roboto", sans-serif;
     width: 210px;
     height: 50px;
@@ -361,7 +360,7 @@ aside {
     text-decoration: none;
 }
 
-.filter button {
+.filter .button {
     margin: 30px;
 }
 
@@ -414,7 +413,6 @@ aside {
     /* выпадающее меню будет исключаться из потока */
     position: relative;
     z-index: 10;
-    width: 270px;
 
     background-color: #3476ba;
     border: 1px solid white;
@@ -426,14 +424,14 @@ aside {
     background-position-x: 240px;
     background-position-y: center;
     padding-left: 20px;
-    /* корректировка позиции */
-    margin-left: 2.5px;
+    margin-right: -15px;
 }
 
 /* выпадающее меню */
 .sort-items p {
     /* спрятано */
     display: none;
+    margin-top: -1px;
     border: 1px solid white;
     /* позиционирование вне потока */
     z-index: 10;
@@ -445,9 +443,9 @@ aside {
     background-color: #3476ba;
     color: white;
     /* корректировка размеров */
-    margin-left: -21px;
-    margin-right: -1px;
-    margin-top: -2px;
+
+    margin-top: -1px;
+    margin-left: -20.5px;
 }
 
 /* при наведении на пункт sort-menu появляется элементы выпадающего меню */
@@ -555,12 +553,20 @@ aside {
 
 
 
-.product-spec button {
+.product-spec .button {
     margin-bottom: 15px;
     margin-left: 15px;
 
 }
 
+/* .product-spec .cart {
+    background-color: #558dc5;
+    border-color: #558dc5;
+    background-image: url(images/icon2.png);
+    background-position-x: 175px;
+    text-align: left;
+    padding-left: 30px;
+} */
 .cart {
     background-color: #558dc5;
     border: 1px solid #558dc5;
@@ -570,11 +576,13 @@ aside {
     padding-left: 30px;
 }
 
+.cart:hover,
 .cart-clicked {
     background-color: white;
     color: #558dc5;
     background-image: url(images/icon1.png);
 }
+
 
 .device-1 {
     background-image: url(images/icon17.png);
@@ -612,13 +620,7 @@ aside {
     background-image: url(images/icon10.png);
 }
 
-.btn-more-details:hover {
-    border-color: #3476ba;
-    color: #3477ba;
-    background-color: #fff;
-}
-
-.more-text {
+.more- {
     font-size: 36px;
     color: white;
     margin: 0 auto;
@@ -682,6 +684,14 @@ aside {
 
 .show {
     display: block;
+}
+
+.products-quantity input {
+    width: 165px;
+}
+
+.products-quantity {
+    padding: 10px;
 }
 
 .slick-dotted.slick-slider {
